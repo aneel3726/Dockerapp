@@ -50,6 +50,8 @@ spec:
       - name: azure-vote-front
         image: mohanraj123/mohanvoteapp123:1.01
         imagePullPolicy: Always
+      imagePullSecrets:
+      - name: myregistrykey
         ports:
         - containerPort: 80
         resources:
@@ -69,5 +71,5 @@ spec:
   type: LoadBalancer
   ports:
   - port: 80
-  selectior:
+  selector:
     app: azure-vote-front
