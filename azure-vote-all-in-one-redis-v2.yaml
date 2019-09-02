@@ -69,5 +69,5 @@ spec:
   type: LoadBalancer
   ports:
   - port: 80
-  selectior:
+  selector:
     app: azure-vote-front
