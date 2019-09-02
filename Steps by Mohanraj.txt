@@ -80,3 +80,583 @@ Creating azure-vote-back  ... done
 [root@dockervm azure-voting-app-redis]#
 
 ----------------------------------------------------------------------------------------
+
+docker container rm cc3f2ff51cab cd20b396a061
+
+-----------------------------------------------------------------------------------------
+docker push mohanraj123/mohanvoteapp123:tagname
+----------------------------------------------------------------------------------------
+[root@dockervm Dockerapp]# docker login --username=mohanraj123
+Password:
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+-----------------------------------------------------------------------------
+[root@dockervm Dockerapp]# docker images
+REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
+azure-vote-front             latest              971a7897e9e9        About an hour ago   965MB
+redis                        latest              f7302e4ab3a8        2 weeks ago         98.2MB
+tiangolo/uwsgi-nginx-flask   python3.6           b3b62e990e26        3 weeks ago         964MB
+
+--------------------------------------------------------------------------------------------
+docker tag azure-vote-front:latest mohanraj123/mohanvoteapp123:1.01
+=-----------------------------------------------------------------------------------------
+[root@dockervm Dockerapp]# docker tag azure-vote-front:latest mohanraj123/mohanvoteapp123:1.01
+[root@dockervm Dockerapp]# docker images
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+azure-vote-front              latest              971a7897e9e9        About an hour ago   965MB
+mohanraj123/mohanvoteapp123   1.01                971a7897e9e9        About an hour ago   965MB
+redis                         latest              f7302e4ab3a8        2 weeks ago         98.2MB
+tiangolo/uwsgi-nginx-flask    python3.6           b3b62e990e26        3 weeks ago         964MB
+------------------------------------------------------------------------------------------------
+
+[root@dockervm Dockerapp]# docker push mohanraj123/mohanvoteapp123:1.01
+The push refers to repository [docker.io/mohanraj123/mohanvoteapp123]
+592b80915c67: Pushed
+93bae04b422f: Pushed
+8c06e8023507: Mounted from tiangolo/uwsgi-nginx-flask
+c219aec5274d: Mounted from tiangolo/uwsgi-nginx-flask
+80f878b9f7ee: Mounted from tiangolo/uwsgi-nginx-flask
+81bad4d54d33: Mounted from tiangolo/uwsgi-nginx-flask
+8167052ac774: Mounted from tiangolo/uwsgi-nginx-flask
+70ade925ec8c: Mounted from tiangolo/uwsgi-nginx-flask
+d0af86045e5c: Waiting
+f2de8b6160c3: Waiting
+f5c4cf49ef48: Waiting
+a9d7cfd311aa: Waiting
+8813ed704d3f: Waiting
+9a433fd16afb: Waiting
+4397632004f1: Waiting
+2762021808f3: Waiting
+989e067774df: Waiting
+45724524272f: Waiting
+7159aeb00f80: Waiting
+d62ff21be8de: Waiting
+a4340048bd3a: Waiting
+d2d326b72dd1: Waiting
+1f66f93fdc3a: Waiting
+787062cd94fb: Waiting
+a4e797bc3f15: Waiting
+392f356944ff: Waiting
+15210a41d4ee: Waiting
+e2a8a00a83b2: Waiting
+-----------------------------------------------------------------------------------------------
+[root@dockervm Dockerapp]# docker push mohanraj123/mohanvoteapp123:1.01
+The push refers to repository [docker.io/mohanraj123/mohanvoteapp123]
+592b80915c67: Pushed
+93bae04b422f: Pushed
+8c06e8023507: Mounted from tiangolo/uwsgi-nginx-flask
+c219aec5274d: Mounted from tiangolo/uwsgi-nginx-flask
+80f878b9f7ee: Mounted from tiangolo/uwsgi-nginx-flask
+81bad4d54d33: Mounted from tiangolo/uwsgi-nginx-flask
+8167052ac774: Mounted from tiangolo/uwsgi-nginx-flask
+70ade925ec8c: Mounted from tiangolo/uwsgi-nginx-flask
+d0af86045e5c: Mounted from tiangolo/uwsgi-nginx-flask
+f2de8b6160c3: Mounted from tiangolo/uwsgi-nginx-flask
+f5c4cf49ef48: Mounted from tiangolo/uwsgi-nginx-flask
+a9d7cfd311aa: Mounted from tiangolo/uwsgi-nginx-flask
+8813ed704d3f: Mounted from tiangolo/uwsgi-nginx-flask
+9a433fd16afb: Mounted from tiangolo/uwsgi-nginx-flask
+4397632004f1: Mounted from tiangolo/uwsgi-nginx-flask
+2762021808f3: Mounted from tiangolo/uwsgi-nginx-flask
+989e067774df: Mounted from tiangolo/uwsgi-nginx-flask
+45724524272f: Mounted from tiangolo/uwsgi-nginx-flask
+7159aeb00f80: Mounted from tiangolo/uwsgi-nginx-flask
+d62ff21be8de: Mounted from tiangolo/uwsgi-nginx-flask
+a4340048bd3a: Mounted from tiangolo/uwsgi-nginx-flask
+d2d326b72dd1: Mounted from tiangolo/uwsgi-nginx-flask
+1f66f93fdc3a: Mounted from tiangolo/uwsgi-nginx-flask
+787062cd94fb: Mounted from tiangolo/uwsgi-nginx-flask
+a4e797bc3f15: Mounted from tiangolo/uwsgi-nginx-flask
+392f356944ff: Mounted from tiangolo/uwsgi-nginx-flask
+15210a41d4ee: Mounted from tiangolo/uwsgi-nginx-flask
+e2a8a00a83b2: Mounted from tiangolo/uwsgi-nginx-flask
+1.01: digest: sha256:aea691ecbe5ecdc06de8180abf444f59e68616b8004b10847f6bb0cc9dd5f320 size: 6175
+--------------------------------------------------------------------------------------------------
+[root@dockervm Dockerapp]# sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+[root@dockervm Dockerapp]# sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
+[root@dockervm Dockerapp]# sudo yum install azure-cli
+Loaded plugins: fastestmirror, langpacks
+Determining fastest mirrors
+azure-cli                                                                                                                                        | 2.9 kB  00:00:00
+base                                                                                                                                             | 3.1 kB  00:00:00
+docker-ce-stable                                                                                                                                 | 3.5 kB  00:00:00
+extras                                                                                                                                           | 2.5 kB  00:00:00
+Not using downloaded extras/repomd.xml because it is older than what we have:
+  Current   : Tue Aug  6 18:25:15 2019
+  Downloaded: Tue Aug  6 18:25:12 2019
+jenkins                                                                                                                                          | 2.9 kB  00:00:00
+openlogic                                                                                                                                        | 2.9 kB  00:00:00
+updates                                                                                                                                          | 2.6 kB  00:00:00
+(1/2): jenkins/primary_db                                                                                                                        | 131 kB  00:00:00
+(2/2): azure-cli/primary_db                                                                                                                      |  47 kB  00:00:00
+Resolving Dependencies
+--> Running transaction check
+---> Package azure-cli.x86_64 0:2.0.72-1.el7 will be installed
+--> Processing Dependency: python-virtualenv for package: azure-cli-2.0.72-1.el7.x86_64
+--> Running transaction check
+---> Package python-virtualenv.noarch 0:15.1.0-2.el7 will be installed
+--> Processing Dependency: python2-devel for package: python-virtualenv-15.1.0-2.el7.noarch
+--> Processing Dependency: python-setuptools for package: python-virtualenv-15.1.0-2.el7.noarch
+--> Running transaction check
+---> Package python-devel.x86_64 0:2.7.5-80.el7_6 will be installed
+--> Processing Dependency: python(x86-64) = 2.7.5-80.el7_6 for package: python-devel-2.7.5-80.el7_6.x86_64
+---> Package python-setuptools.noarch 0:0.9.8-7.el7 will be installed
+--> Processing Dependency: python-backports-ssl_match_hostname for package: python-setuptools-0.9.8-7.el7.noarch
+--> Running transaction check
+---> Package python.x86_64 0:2.7.5-69.el7_5 will be updated
+---> Package python.x86_64 0:2.7.5-80.el7_6 will be an update
+--> Processing Dependency: python-libs(x86-64) = 2.7.5-80.el7_6 for package: python-2.7.5-80.el7_6.x86_64
+---> Package python-backports-ssl_match_hostname.noarch 0:3.5.0.1-1.el7 will be installed
+--> Processing Dependency: python-ipaddress for package: python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch
+--> Processing Dependency: python-backports for package: python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch
+--> Running transaction check
+---> Package python-backports.x86_64 0:1.0-8.el7 will be installed
+---> Package python-ipaddress.noarch 0:1.0.16-2.el7 will be installed
+---> Package python-libs.x86_64 0:2.7.5-69.el7_5 will be updated
+---> Package python-libs.x86_64 0:2.7.5-80.el7_6 will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================================================================
+ Package                                                    Arch                          Version                                Repository                        Size
+========================================================================================================================================================================
+Installing:
+ azure-cli                                                  x86_64                        2.0.72-1.el7                           azure-cli                         27 M
+Installing for dependencies:
+ python-backports                                           x86_64                        1.0-8.el7                              base                             5.8 k
+ python-backports-ssl_match_hostname                        noarch                        3.5.0.1-1.el7                          base                              13 k
+ python-devel                                               x86_64                        2.7.5-80.el7_6                         updates                          398 k
+ python-ipaddress                                           noarch                        1.0.16-2.el7                           base                              34 k
+ python-setuptools                                          noarch                        0.9.8-7.el7                            base                             397 k
+ python-virtualenv                                          noarch                        15.1.0-2.el7                           base                             1.7 M
+Updating for dependencies:
+ python                                                     x86_64                        2.7.5-80.el7_6                         updates                           95 k
+ python-libs                                                x86_64                        2.7.5-80.el7_6                         updates                          5.6 M
+
+Transaction Summary
+========================================================================================================================================================================
+Install  1 Package  (+6 Dependent packages)
+Upgrade             ( 2 Dependent packages)
+
+Total download size: 35 M
+Is this ok [y/d/N]: y
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+(1/9): azure-cli-2.0.72-1.el7.x86_64.rpm                                                                                                         |  27 MB  00:00:00
+(2/9): python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch.rpm                                                                              |  13 kB  00:00:00
+(3/9): python-backports-1.0-8.el7.x86_64.rpm                                                                                                     | 5.8 kB  00:00:00
+(4/9): python-2.7.5-80.el7_6.x86_64.rpm                                                                                                          |  95 kB  00:00:01
+(5/9): python-devel-2.7.5-80.el7_6.x86_64.rpm                                                                                                    | 398 kB  00:00:00
+(6/9): python-ipaddress-1.0.16-2.el7.noarch.rpm                                                                                                  |  34 kB  00:00:00
+(7/9): python-libs-2.7.5-80.el7_6.x86_64.rpm                                                                                                     | 5.6 MB  00:00:00
+(8/9): python-setuptools-0.9.8-7.el7.noarch.rpm                                                                                                  | 397 kB  00:00:00
+(9/9): python-virtualenv-15.1.0-2.el7.noarch.rpm                                                                                                 | 1.7 MB  00:00:00
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                    23 MB/s |  35 MB  00:00:01
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : python-libs-2.7.5-80.el7_6.x86_64                                                                                                                   1/11
+  Updating   : python-2.7.5-80.el7_6.x86_64                                                                                                                        2/11
+  Installing : python-devel-2.7.5-80.el7_6.x86_64                                                                                                                  3/11
+  Installing : python-backports-1.0-8.el7.x86_64                                                                                                                   4/11
+  Installing : python-ipaddress-1.0.16-2.el7.noarch                                                                                                                5/11
+  Installing : python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch                                                                                            6/11
+  Installing : python-setuptools-0.9.8-7.el7.noarch                                                                                                                7/11
+  Installing : python-virtualenv-15.1.0-2.el7.noarch                                                                                                               8/11
+  Installing : azure-cli-2.0.72-1.el7.x86_64 [##################################################################################                                ]  9/11
+  Installing : azure-cli-2.0.72-1.el7.x86_64                                                                                                                       9/11
+  Cleanup    : python-2.7.5-69.el7_5.x86_64                                                                                                                       10/11
+  Cleanup    : python-libs-2.7.5-69.el7_5.x86_64                                                                                                                  11/11
+  Verifying  : azure-cli-2.0.72-1.el7.x86_64                                                                                                                       1/11
+  Verifying  : python-devel-2.7.5-80.el7_6.x86_64                                                                                                                  2/11
+  Verifying  : python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch                                                                                            3/11
+  Verifying  : python-libs-2.7.5-80.el7_6.x86_64                                                                                                                   4/11
+  Verifying  : python-2.7.5-80.el7_6.x86_64                                                                                                                        5/11
+  Verifying  : python-backports-1.0-8.el7.x86_64                                                                                                                   6/11
+  Verifying  : python-ipaddress-1.0.16-2.el7.noarch                                                                                                                7/11
+  Verifying  : python-virtualenv-15.1.0-2.el7.noarch                                                                                                               8/11
+  Verifying  : python-setuptools-0.9.8-7.el7.noarch                                                                                                                9/11
+  Verifying  : python-libs-2.7.5-69.el7_5.x86_64                                                                                                                  10/11
+  Verifying  : python-2.7.5-69.el7_5.x86_64                                                                                                                       11/11
+
+Installed:
+  azure-cli.x86_64 0:2.0.72-1.el7
+
+Dependency Installed:
+  python-backports.x86_64 0:1.0-8.el7             python-backports-ssl_match_hostname.noarch 0:3.5.0.1-1.el7          python-devel.x86_64 0:2.7.5-80.el7_6
+  python-ipaddress.noarch 0:1.0.16-2.el7          python-setuptools.noarch 0:0.9.8-7.el7                              python-virtualenv.noarch 0:15.1.0-2.el7
+
+Dependency Updated:
+  python.x86_64 0:2.7.5-80.el7_6                                                   python-libs.x86_64 0:2.7.5-80.el7_6
+
+Complete!
+[root@dockervm Dockerapp]#
+
+--------------------------------az login-------------------------------------------------------------------------
+[root@dockervm Dockerapp]# az login
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code EKLVR67UL to authenticate.
+https://microsoft.com/deviceloginEKLVR67UL[
+  {
+    "cloudName": "AzureCloud",
+    "id": "d90e4cac-472f-4d07-8c97-ab745e0cde48",
+    "isDefault": true,
+    "name": "Visual Studio Enterprise ? MPN",
+    "state": "Enabled",
+    "tenantId": "7282dbaf-e86c-4be9-8b43-fbe21adcee57",
+    "user": {
+      "name": "MV00503834@mpntechm.onmicrosoft.com",
+      "type": "user"
+    }
+  }
+]
+[root@dockervm Dockerapp]#
+------------------------------------------------------------------------------------------------------------------
+[root@dockervm Dockerapp]# az group create --name KubeResGroup --location eastus
+{
+  "id": "/subscriptions/d90e4cac-472f-4d07-8c97-ab745e0cde48/resourceGroups/KubeResGroup",
+  "location": "eastus",
+  "managedBy": null,
+  "name": "KubeResGroup",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": null
+}
+[root@dockervm Dockerapp]#
+
+-------------------------------------------------------------------------------------------------------------------
+[root@dockervm techmuser]# az ad sp create-for-rbac --skip-assignment
+{
+  "appId": "43afde7e-1855-4f44-883b-7f00dfcc1a2f",
+  "displayName": "azure-cli-2019-09-02-11-15-05",
+  "name": "http://azure-cli-2019-09-02-11-15-05",
+  "password": "bda8e059-306e-47bd-a9da-e2ef5a990cc4",
+  "tenant": "7282dbaf-e86c-4be9-8b43-fbe21adcee57"
+}
+--------------------------------------create Kube Cluster------------------------------------------------------------
+>     --resource-group KubeResGroup \
+>     --name KubeTestCluster \
+>     --node-count 1 \
+>     --service-principal 43afde7e-1855-4f44-883b-7f00dfcc1a2f \
+>     --client-secret bda8e059-306e-47bd-a9da-e2ef5a990cc4 \
+>     --generate-ssh-keys
+SSH key files '/root/.ssh/id_rsa' and '/root/.ssh/id_rsa.pub' have been generated under ~/.ssh to allow SSH access to the VM. If using machines without permanent storage like Azure Cloud Shell without an attached file share, back up your keys to a safe location
+ - Running ..
+ 
+--------------------------------------------------------------------------------------------------------------------
+[root@dockervm techmuser]# az aks create \
+>     --resource-group KubeResGroup \
+>     --name KubeTestCluster \
+>     --node-count 1 \
+>     --service-principal 43afde7e-1855-4f44-883b-7f00dfcc1a2f \
+>     --client-secret bda8e059-306e-47bd-a9da-e2ef5a990cc4 \
+>     --generate-ssh-keys
+SSH key files '/root/.ssh/id_rsa' and '/root/.ssh/id_rsa.pub' have been generated under ~/.ssh to allow SSH access to the VM. If using machines without permanent storage like Azure Cloud Shell without an attached file share, back up your keys to a safe location
+ - Running ..
+ - Running ..
+{
+  "aadProfile": null,
+  "addonProfiles": null,
+  "agentPoolProfiles": [
+    {
+      "availabilityZones": null,
+      "count": 1,
+      "enableAutoScaling": null,
+      "maxCount": null,
+      "maxPods": 110,
+      "minCount": null,
+      "name": "nodepool1",
+      "orchestratorVersion": "1.13.10",
+      "osDiskSizeGb": 100,
+      "osType": "Linux",
+      "provisioningState": "Succeeded",
+      "type": "AvailabilitySet",
+      "vmSize": "Standard_DS2_v2",
+      "vnetSubnetId": null
+    }
+  ],
+  "apiServerAuthorizedIpRanges": null,
+  "dnsPrefix": "KubeTestCl-KubeResGroup-d90e4c",
+  "enablePodSecurityPolicy": null,
+  "enableRbac": true,
+  "fqdn": "kubetestcl-kuberesgroup-d90e4c-83a5b132.hcp.eastus.azmk8s.io",
+  "id": "/subscriptions/d90e4cac-472f-4d07-8c97-ab745e0cde48/resourcegroups/KubeResGroup/providers/Microsoft.ContainerService/managedClusters/KubeTestCluster",
+  "identity": null,
+  "kubernetesVersion": "1.13.10",
+  "linuxProfile": {
+    "adminUsername": "azureuser",
+    "ssh": {
+      "publicKeys": [
+        {
+          "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCncnEyeVFySrcGBAuUzD79r9VLa+lKAoDkb06gjtyiTmtig5CSpRbnUPPgscRvTXc4m5sKIlVRmDAqvbW5skejaOtWs2oY5RIMIQMABWVTRp1AHxzHo8iTl8Q8vF1hZ8JEikUcB8Hys36uXBduIlLVOoiu7hMkfA4zv9glFOmb6MJ1ktZBtSYzmQCvGG5+IBj0qEjoP8iQWow9v3XCUgIw21Wo2+yE4Oo02GAJ1xIZ6zn6bStShTz4OvrDTLakkgiwFKIBHkNDG6zeazdYzPbmxC700zxGyMu9Tc1demUyiRjufUSzGLLfl5ZWcnGubTsU4YEnnBEMUGMRAnZXHPTz"
+        }
+      ]
+    }
+  },
+  "location": "eastus",
+  "maxAgentPools": 1,
+  "name": "KubeTestCluster",
+  "networkProfile": {
+    "dnsServiceIp": "10.0.0.10",
+    "dockerBridgeCidr": "172.17.0.1/16",
+    "loadBalancerSku": "basic",
+    "networkPlugin": "kubenet",
+    "networkPolicy": null,
+    "podCidr": "10.244.0.0/16",
+    "serviceCidr": "10.0.0.0/16"
+  },
+  "nodeResourceGroup": "MC_KubeResGroup_KubeTestCluster_eastus",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "KubeResGroup",
+  "servicePrincipalProfile": {
+    "clientId": "43afde7e-1855-4f44-883b-7f00dfcc1a2f",
+    "secret": null
+  },
+  "tags": null,
+  "type": "Microsoft.ContainerService/ManagedClusters",
+  "windowsProfile": null
+}
+
+
+----------------------------------Check the same in Azure portal----------------------------------------------------------------
+
+Home ->  Resource groups -> KubeResGroup -> KubeTestCluster
+
+-------------------------------------------------------------------------------------------------------------------
+
+Connect to cluster using kubectl
+To configure kubectl to connect to your Kubernetes cluster, use the az aks get-credentials command. The following example gets credentials for the AKS cluster named myAKSCluster in the myResourceGroup:
+
+Azure CLI
+
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+az aks get-credentials --resource-group KubeResGroup --name KubeTestCluster
+-------------------------------------Kube Config-------------------------------------------------------------------
+[root@dockervm techmuser]# az aks get-credentials --resource-group KubeResGroup --name KubeTestCluster
+Merged "KubeTestCluster" as current context in /root/.kube/config
+[root@dockervm techmuser]# cd  /root/.kube/
+[root@dockervm .kube]# ls
+config
+[root@dockervm .kube]# cat config
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUV5RENDQXJDZ0F3SUJBZ0lSQUszQnBuRTRKZm5tRjcvN0E2SmFrWWd3RFFZSktvWklodmNOQVFFTEJRQXcKRFRFTE1Ba0dBMVVFQXhNQ1kyRXdIaGNOTVRrd09UQXlNVEV3TnpNNFdoY05ORGt3T0RJMU1URXhOek00V2pBTgpNUXN3Q1FZRFZRUURFd0pqWVRDQ0FpSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnSVBBRENDQWdvQ2dnSUJBTHkyCkdZOWFzNjZqbkRRYWZWSGx6S1hEQTZaT3VmVjBsTk1rcVpaK0xpZitLbk9ZUXVRY1NONlB4WEtJNmE1WUZWZ0oKdmlDcTUzRFprMFFmMzJxYzJUdFcxb3RYMFJkSU5oOG9OdlJFdGF5RmVjV0pkVGc1VzMvK3UvV0tOeUFIaWRLdgpmUUkzdWtnQk1NS1ZWak9qM1A1NHVrK28ybyt1bmtJQWx6NW1wV3YxV1JRb2dIdGxmaWJrU3B4SlhoWkRFNlFzCjhXUTc1emp6bjlyQngvSG0yZWhEai90amR0Sk5ac2FGelp0NTQ0bEMzbWs0SFl6cEZqckd0anRYYVFVbXJ5UTYKdVBXeWl0V21HcFN5U2lKWWFoSzNOWGttNEMzSUpVOWk2VllmeE01K2pBR1pzczljZVFucXNaQmRWNTU2Ty85YgpsRTdaVGdEQWFPeEJsaDB2bHV4L0xhVjR3NTNZOE5aWFlwckJOQ3Z6U2Q0VnBabE1XajJHV1UwVk9RZjJqQlBpCnlIa0U1aEpmVnhjS1BXckYwS0VqMmMyS2U3RlJxWXZRUlVLTVdPaUFUT0hmbkNNQ256UXhscjR0TlhESUplMmsKcEo1TTlOQ3pzTFpML21FdlFWcU9xOTZyOUU5cTVWdzdLeFBLcFdOQzEyTjhpajMvRmpzYWxDN1FEKzR4dzJYcwpOLzVEUWNpQzlxVmh2VERUMmF3bnhicjFJeklEN2MyMzFuLzVBWHA0Mml6NVhKcU5BeERBU291ZW5BZ3lJQXNuCkRnZThON0xoR0ZpRDB0WEtuUjA5TkR0TS94dXo4WFQ2UVpSOTdZNndzeVQyU1k1eUI3OXFPdXlMQ2s2WDZrdy8KYWJWbS96dis0TGhXaHRFWllZMXlYSEpYcnBOK0MwM0cxUW1Wa0xEdkFnTUJBQUdqSXpBaE1BNEdBMVVkRHdFQgovd1FFQXdJQ3BEQVBCZ05WSFJNQkFmOEVCVEFEQVFIL01BMEdDU3FHU0liM0RRRUJDd1VBQTRJQ0FRQlc4UjcrCk1hWnVSaktjVXI1V0RpQVNZR05iMmwzb3lGM0ZXNTJYcGVLdEFUTFY0dWhsZ084dG03ejhnTGNjVXVCcEFSUXkKQjh0RlFrdUMyaG1tQlZBeTZwNnRhWTZNcVhBakRzOU02R1lvbWg1K2phTEc5d1BEMHplLzNENEpicHAzTjE3dApndUNyOHNyK2lWR2JXRUoyVEZuWkVmbm1nNmJSemo1aG9IaG9WZ0NvUHRPTWNMemJITEJ3VjR2RWxVYTZxK0E2Cmg0M29GQmNRLzJjS3FNODYyQ0psSzZJOE5veWh1a1J6OC8vTU50Q29UbXc2YkFiKzZuT25uMjlRZmRtNUtXMVkKZitxQ0RYdndNZnJPemh0a0tNV2xieGdhaklEQ2F5WXNTUVNDVytUUGUxZVFlcE04SEZURTUrS3M2RkJZWFQwMwp5d0sxZFcvQUVNZllxQU9Vc0ZSTjRoaUo1ZFNzMjkwMWdKVFF0bm9kVldFcE1OTEpiTDlrQWNXVFc5MWs5NU5qClNleDA3c2RVTzE3S2R1TkZ4TjJQNEt5cVNTamRIMnF3UktncFFMYlJJcllFbFR1RElaQ3Z6YnBGU3lVMHRobTAKenYzUFBqK05lTmF3UnRXVnBuS0NkVWhqL2J3MExJTkp4WWJWeGthZFZwSU9UZ0Z6QlVwdFI1OVAzZmJvTzQ5egpxOHQ0clQyVkxzLzRGZ2M2TzQzamM5REZGLzBiQXVKM1FsZFc3K1phMkp2Wm9wYUxjMzQ2dmh4WXlPenNRVmJ0CjJFSEl6TFVaODVGY3ZNNWpTbU5maWg1K1E5SEE5Ynp1dVlKdUdLUnNwR2s5bEhXZmNDUkM5eUZ2ZHpVU0tHL3kKV0xhclV2c1hCb2hSZW51bHMwMWkyeWY1NmUzSzl0Vk83SlArSFE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    server: https://kubetestcl-kuberesgroup-d90e4c-83a5b132.hcp.eastus.azmk8s.io:443
+  name: KubeTestCluster
+contexts:
+- context:
+    cluster: KubeTestCluster
+    user: clusterUser_KubeResGroup_KubeTestCluster
+  name: KubeTestCluster
+current-context: KubeTestCluster
+kind: Config
+preferences: {}
+users:
+- name: clusterUser_KubeResGroup_KubeTestCluster
+  user:
+    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUUvRENDQXVTZ0F3SUJBZ0lRUTBKemtzZHk3ZmFQVklUQk54bmxtakFOQmdrcWhraUc5dzBCQVFzRkFEQU4KTVFzd0NRWURWUVFERXdKallUQWVGdzB4T1RBNU1ESXhNVEEzTXpoYUZ3MHlNVEE1TURFeE1URTNNemhhTURBeApGekFWQmdOVkJBb1REbk41YzNSbGJUcHRZWE4wWlhKek1SVXdFd1lEVlFRREV3eHRZWE4wWlhKamJHbGxiblF3CmdnSWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUNEd0F3Z2dJS0FvSUNBUURKL1ZySENERjdjWkJhWldhUjJzOWoKNFA4eUhIYS9TQUVYeWd1MU9qV2tmQkhRWmUzalJEU2ZJOENKSWhLTnlDVkVGNjh2d2RWdkhPY1ozTEJKNjlzSgpzNkF0Wi8yQmRlQllzM3RVRnJwNzNQYXBYT2ZyTUFieEpTTC9LbTc3MWR4WDFwSTlkM05uRU5Uc1JTbHdVNUJECnB2U2I3ejVZNzU1OHpRVGUvbENCUUVWUmt4WmNSZHVtMUgzNWVnNWRqV1BueDJmcmpMbFI0TTIxNDVGZkl1eVUKeHN5Vk9IaDJoM0I2MEdTTGZaU1R6eWs1Q0NzeFRRUGFVelRxRjMvWTJ2TlZHa3dlLzhZWXNoMG8zdjMvUGg4SApPKzJidXFDemswQ1dSWW9CWnVFUEkwNUNUUysxRS9XYzY1SGtFay8wMUtHSVN4c09XbzBZOXFCaEpaU3dYUjlFCmxXUG9wbmJkdXhkWVIvQm92VVZTWEF6NFlORVllK0Zqa3ZZNVNCM280b3MybU9uL1VseUNyWkZST2lSd1pjOXUKbkpqVlRRRnJBY3ZncGh3TUZzVXRVU2dvOUUzMVl3cys2cVoyRlNzblJ2am4ydm4xRUYzbjdEeTc0bE9TYXcxYgpmMzYwSlNtQlMvTEhzOHZpbTVid21GTWpYN3l6Zy92Mi9UcG5EU3hzSmp3dGhPSVZlN1NMRnpQUUJ2dFNsWlpyCkQwazFMZzhhU1BLOEpGQzhYQXhnSHZwMW5sUGM0NlBKZjVGZTJXcWQwdzJwK3U4ZUNsMDlCYm1hRzQ2V1V3ZnMKaEUzYlBrSDJleFBHVDB0WG44Snd2QityRGkrK1ptd0xqMXYzRXVCcHpvWEZhSytDM1FkQksreVBZSkZOQTU0cApSeCtwTzlQSk5ZWEdySXpaQkRyN0R3SURBUUFCb3pVd016QU9CZ05WSFE4QkFmOEVCQU1DQmFBd0V3WURWUjBsCkJBd3dDZ1lJS3dZQkJRVUhBd0l3REFZRFZSMFRBUUgvQkFJd0FEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FnRUEKc1lmaDZ4NU5ZaFV1a3g2aVRTaWRaeGs3U1lhWVFuWXpmTzlic0k2RVJCcnIvcTlidHgzblBjeGZXRlBjUzJnWgp2V01WdkRBekVRbmNLU1NJcFNvYXJ6S05nTm5NY29rbEF2WHhnd0pvQm56UXd2L3lwYUYySzA3aW9sWi9TazFMCldhOGVNckw3ZFRQMVRzUURMSmI2N29SbkNzR3ZRbjVGZU1zWkkveWVHR3hXd1p1aVFzQkc4WkMzNmNVM3V1emwKTHY0OW1DYS9LTFJKUUt5Rk82T1FibHk3NDFMbzkvM3JKWjdyNW00TW9HTWRXQUpkNHhINGc2bWhlK3J3YXdORApyMnd4YTBicVRjSnhNSE1LQnVPbTZ6Q0lCWEU5bERxZ0diSXZ4eFl4SnJ0ZmE5Q2c2UGRhVFBMRXh6TlBGWWNNCjRjaTJQU2p1aUZsLzI3ZHZpbjNSMzVJMHFNTU92RHkycmFMWE5vSTZYWWpISU1sb1Z4V2lyU09GNGJ4akRRZlcKb0VldGw0VHJiaTJGTGNqUWtuSkJJOHBWWmtwWXBtY0pWVEMvbWwrWnlvM1FCUHBDRFhrSlFGMkxQbTIybDIzVApMUG8zc2FIcVZDRDNoWXlkdFgzOWVEKzlkMGhhZ3lxbFI2YytNYzFpTnM4eHRIOXZSRlRKUWhGemxQUWZIdGszClU5eERrSVpjMnZ4dzRGclJWcW9aZGgwakJhSXlUaDJqbUhVczg0U3lqaUpiTGdHVHd3dytiV0k4UE9sQVhJSncKUlVXaVlHbmtwdVZPSHdDUUV3bFU2TTBlaW5UY1dlTDJ0dzhLMkI4WGpWQU4ycjVDMkJ5RndGQm1hcnV6c3pKMQpybEVCdkxJZmx2dmpsRkwyMlFIbCtBTklBc1E4bXRjVjY1NmFFaTdDK1o0PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    client-key-data: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlKS1FJQkFBS0NBZ0VBeWYxYXh3Z3hlM0dRV21WbWtkclBZK0QvTWh4MnYwZ0JGOG9MdFRvMXBId1IwR1h0CjQwUTBueVBBaVNJU2pjZ2xSQmV2TDhIVmJ4em5HZHl3U2V2YkNiT2dMV2Y5Z1hYZ1dMTjdWQmE2ZTl6MnFWem4KNnpBRzhTVWkveXB1KzlYY1Y5YVNQWGR6WnhEVTdFVXBjRk9RUTZiMG0rOCtXTytlZk0wRTN2NVFnVUJGVVpNVwpYRVhicHRSOStYb09YWTFqNThkbjY0eTVVZUROdGVPUlh5THNsTWJNbFRoNGRvZHdldEJraTMyVWs4OHBPUWdyCk1VMEQybE0wNmhkLzJOcnpWUnBNSHYvR0dMSWRLTjc5L3o0ZkJ6dnRtN3FnczVOQWxrV0tBV2JoRHlOT1FrMHYKdFJQMW5PdVI1QkpQOU5TaGlFc2JEbHFOR1BhZ1lTV1VzRjBmUkpWajZLWjIzYnNYV0Vmd2FMMUZVbHdNK0dEUgpHSHZoWTVMMk9VZ2Q2T0tMTnBqcC8xSmNncTJSVVRva2NHWFBicHlZMVUwQmF3SEw0S1ljREJiRkxWRW9LUFJOCjlXTUxQdXFtZGhVckowYjQ1OXI1OVJCZDUrdzh1K0pUa21zTlczOSt0Q1VwZ1V2eXg3UEw0cHVXOEpoVEkxKzgKczRQNzl2MDZadzBzYkNZOExZVGlGWHUwaXhjejBBYjdVcFdXYXc5Sk5TNFBHa2p5dkNSUXZGd01ZQjc2ZFo1VAozT09qeVgrUlh0bHFuZE1OcWZydkhncGRQUVc1bWh1T2xsTUg3SVJOMno1Qjluc1R4azlMVjUvQ2NMd2ZxdzR2CnZtWnNDNDliOXhMZ2FjNkZ4V2l2Z3QwSFFTdnNqMkNSVFFPZUtVY2ZxVHZUeVRXRnhxeU0yUVE2K3c4Q0F3RUEKQVFLQ0FnQXkwNURESW5tcEVWTjhtNlZxc0QrZFoyRnZ6NS9GMUMyS09lb21TU1owWkUvck82clhsRE1WbEY1LwpZMVo5M000YnkwWG00NFI4ZUM1aTRKaHZrV3pGalRDU0hHZTY2dGx3R0lIQkVCTU8xZlF2ZTlSVDV2cm9OU3NRClFESTdKbjVTa0FpdWROOVNJUGNqR09ncmZxdC9pb1JrdEpmZ3N6TVRQbGVxY1IzNjJCeFpRWVRQNVRnM1M2TUQKWXNZNG5qcDBlVVhhRE1nWkpWTStJS3hVM3luZTZnTlN6U25xMFh2cE80VUJZTEZCWEZDSUxGa0tCOUlmWHU2aQp0UlVUa1V6SHJsMVhNNDg2YVo5U3lJSHJkMHRCZTcvM2ZzZXZTQzlwWU1nd1FCNER2Q09XSld3S3lhSDFRWVd0CmVUb3JabEhiUk9MakFzQWNkdnEyVjBtSjgzVEpUeXZ2TkxhVlk3eVcyb0x1RERFUE5OYWQ3VE5TeEk3bGYyc2IKa0Y4MmpGNHMxSitKdC9MYWVhWVJ6MVdVMmk3TjlhVlkyMVlGazJ2K3A1Mitneld0NjBNbjN0dS9nT005YUVyWApuNzNjTVlhK3JNZW9GVHpSd3JtWjZWaE1tenR6ZUVYaVdMYzVURVdIWHVidDMyVUhoQWN4Skk3N290Y05yY2o2CmlDVEtXamJYcVhwY3lycTZFR0V0a01RQVZDVklLa05ic2l2NE1XS1QvRUY3cFMzMzZoYWxRMXNFN1d3Tk5ZcVYKZFVDc1FEaEFZTXdKazRuREJVVHNNYWYwY2UvWHBSREtEU0pJZWgveUxkaTlscVNXNkcrcXpFbUNuei9uNzUyVwpFSTl4OVFCLzg3bzNteDlkTWlIb3pZbFhKOGtha3I4NHE2VHFZQ0VEN2M0VnZyVkpxUUtDQVFFQXpRWDdKeForCklrT1BpRW5ld21RYWJVNnBSQUlSZGdvTGREYmJpNDZxYWo5WGRKQ2JXZFFVcmxlS3BwKzZXRHhTbjBMRHpnR0sKN1dYaGpRTVNPVFpUQ3VTWHU2a0R5bnJiRDJUR3JtK0dpc2hxTHZ3KzRHeHlkVGNUbjVJOG1CZzlCN0svSFZtSQovYmltWUQ0WTFxeG9PZEg5REVua2NlcjdpMW5uWWo4R00zWGhVR0w4Uk9GcEVyRTVKYkFoZG04b21VSmV4a25GCmozcW1ZN3FlMSt1WGF3ZWxEY0hPazFIOWFkSytjeFloR2p2cHViVlFGRXczWmRFVHFoTjlUUHg1SWZoTkMwSGgKZEtpWTZCOTU1OUtuMzBWTmM0dFVBYTZMSTZVZlJEa0VUeW8vRFY5RUY3UEhUYkUxalcyNDBaaUFCaExxNnJWTApTVVk2MzgrdUMxZTNTd0tDQVFFQS9EWkdTRmszSnlubWFhY3VxdzQvRHp5d3drbGVtK0hXV25Fa2xqQkppM1R4CnJpbUNwMG40dVVpSUVtY0M5ZkFBSGlJQ2hVM1NIZmUzS3VtWWtHc05uS3JRRTRDUTk1S1RCa1RHa2FucW15UDkKdzd5dmM2Q3dnaUdpNzk4UVVRb1lscnJUTWZzdi95TU5WejVyWFhQbkQvV2k1REJSZE1rdGF2bG93TCtnZk9LZApXNG02WFFrc2ZwR09GRHZDaTIvSCtLSmlnMmgyaDRoODJPT2NXVzIzdENSQWdXcER0VWtVSXVsdzBvY1NJM0Y2CjBSK1FWc24yTVpVejVTMFRFSERyYWdiMUl6VWwzS05XUzZJNkYvYUhZamtXVGdkRmUybDhKTWRaZlVGeDRONnIKU0txK0l3YndqZEZmUkVIaXdpdWdXSXBLdnVDbFBsVEFIZjFGbVRNY3pRS0NBUUVBdE5xSTBOTXJrdWdMN2dwVApvU0NTbTBlZlVxbU1ZNWE2d2RvK1VsNFgvNzgrVTBuWWNDWC8xRWJPdk9yN2d5ZzdMZGZFUjYzZXNrbUQ3Rk1BCk9VMnRkVmR1YlpETEVrckxnRW5DWlU5bDNIaXNDaVJqQnE5RFRCaTRpN09CRmgyVGdIM3h6bDhUMDlTVmx5SlAKNE5hVzNpSlpXUVM1cXEvQkV3ek1ha0wwSW1MaXpYbHoxUU1PSC9vTFVpNkxaaURxTEQ5NndPbUVoMnVHNlVSUApLR0xlNEFBUFhoSlBPbTlCM3A2VGQ0dld5WUIrVFY0ZWRMbEN5T0xrdU11V1pWbjFOTDBHb1Y2TkZjNC9pOHR3ClNzbnRZYXVOaGRZcTFZejFtZ3puaHRQUTlGQnM3RXZVRWlCNU9CU1JDOS8wLzViSm9CSUIvZWJNc2FkcytjOEcKVldVYi93S0NBUUVBcmx6bllnVXJ1QXVqbTg5VTJEVlZLemVPREFPbFFLZDFCYm5LelhvOG5na1BQSlMrR3VGcwo3c3RTSjBiSUtUYnZIZVh0VURObzNBYnh2dDBYK0YvS1hWRko0UEcxUnpNeUtkZEtZRkhVTzhVNkh5UkhOKzBUCm1pT2UvYTU5SFVtWmpqdEMzdjhGUTZIOEN5REFJUytMd3VEUzZHYnZLWW9idUNVTllwUVlZNzVYZzMxSU5pR3QKZlNNcjBwa3QrakFoVTZjUDdFRkFFSnN2bE5KbXVQeTlUL0R3RjRoYm51MFMyc0FBbTh0OW9ydEZhV1lrNTV0ZwpkUTd0ZmJjWHd2b09CcE1nem1KajlwR0ZpMnh3TlRqZWgrMW5takkwdXdsR0pqY2JpeGkvbmZMUy83M3JEVlF5CjRoaXBnQXI4dGJocmRrckZPZ2tjdEdickd0Q0tXVXVZMFFLQ0FRQUpObGNFWGUvZlpSbktkRkxMNWo4b3NGeVgKRHZ1c1lSS1kzSlBFZU1ybW5RQ2NrYVJmSWRhbVVZNFFrKzhlUkdIdjdxWmsyMmVhcVdPMU9idmx1YTNWU3BoNQpwSTg3S25kNDNwSFRJVmFzK0ZtV05Lb1RnbFdmRnFTeEdEdEJzSy9yLzdjejBPdDcwZ0ZVMjZLanBEeVZGM2o5CkdZeGJqUGZMaUZRRWpvY0ZkY0g1Y05qMWl5RXRzazdkWE5LRGRyNXQwK2Mrb0hhcjVVYzBvVHo5blBZTW03WlIKUEM2c2dxblg4bmlmLy85cnBydVZzZVpjT0EvenJhem5mTjdoR0VEN2ttMjdjRHF2dGgwSDRYbU5mUnJVUzA0cwpCNEVqU2xUSzhmOXlmQ2xZZko3SllZbkhBUUYwUEFqdWJRVTVuZkdWcFBOK0dqQlRnd3ZPSDUwMTFVL04KLS0tLS1FTkQgUlNBIFBSSVZBVEUgS0VZLS0tLS0K
+    token: bAyZRlcekJhNB50pSsFEoPceG1ZA0gBvgG2cjB8Xh261Gor1uiuWfZQQg9Ujzn3dVs9qo342eEpaG7qMntsZm3mhW18KK3mu0hA7J7H43EfHKAUCvhsp5SwIGY4HUg95
+[root@dockervm .kube]#
+
+--------------Install KUBECTL-----------------------------------------------------------------------------------------
+Ref: https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux
+
+[root@dockervm ~]# curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 40.9M  100 40.9M    0     0  65.9M      0 --:--:-- --:--:-- --:--:-- 66.0M
+[root@dockervm ~]# $(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
+bash: v1.15.3: command not found
+[root@dockervm ~]# curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.15.0/bin/linux/amd64/kubectl
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 40.9M  100 40.9M    0     0  47.8M      0 --:--:-- --:--:-- --:--:-- 47.8M
+[root@dockervm ~]# chmod +x ./kubectl
+[root@dockervm ~]# sudo mv ./kubectl /usr/local/bin/kubectl
+[root@dockervm ~]# kubectl version
+bash: kubectl: command not found
+[root@dockervm ~]# kubectl
+bash: kubectl: command not found
+[root@dockervm ~]# cd /usr/local/bin/
+[root@dockervm bin]# kubectl
+bash: kubectl: command not found
+[root@dockervm bin]# kubectl
+bash: kubectl: command not found
+[root@dockervm bin]# ls
+docker-compose  kubectl
+[root@dockervm bin]# kubectl
+bash: kubectl: command not found
+[root@dockervm bin]# kubectl version
+bash: kubectl: command not found
+[root@dockervm bin]# ls -al
+total 57772
+drwxr-xr-x.  2 root root       43 Sep  2 11:32 .
+drwxr-xr-x. 12 root root      131 Aug 15  2018 ..
+-rwxr-xr-x.  1 root root 16168192 Sep  1 14:04 docker-compose
+-rwxr-xr-x.  1 root root 42985504 Sep  2 11:32 kubectl
+
+---------------------Check Kubectl-----------------------------------------------
+[techmuser@dockervm ~]$ kubectl
+kubectl controls the Kubernetes cluster manager.
+
+ Find more information at:
+https://kubernetes.io/docs/reference/kubectl/overview/
+
+Basic Commands (Beginner):
+  create         Create a resource from a file or from stdin.
+  expose         Take a replication controller, service, deployment or pod and
+expose it as a new Kubernetes Service
+  run            Run a particular image on the cluster
+  set            Set specific features on objects
+
+Basic Commands (Intermediate):
+  explain        Documentation of resources
+  get            Display one or many resources
+  edit           Edit a resource on the server
+  delete         Delete resources by filenames, stdin, resources and names, or
+by resources and label selector
+
+Deploy Commands:
+  rollout        Manage the rollout of a resource
+  scale          Set a new size for a Deployment, ReplicaSet, Replication
+Controller, or Job
+  autoscale      Auto-scale a Deployment, ReplicaSet, or ReplicationController
+
+Cluster Management Commands:
+  certificate    Modify certificate resources.
+  cluster-info   Display cluster info
+  top            Display Resource (CPU/Memory/Storage) usage.
+  cordon         Mark node as unschedulable
+  uncordon       Mark node as schedulable
+  drain          Drain node in preparation for maintenance
+  taint          Update the taints on one or more nodes
+
+Troubleshooting and Debugging Commands:
+  describe       Show details of a specific resource or group of resources
+  logs           Print the logs for a container in a pod
+  attach         Attach to a running container
+  exec           Execute a command in a container
+  port-forward   Forward one or more local ports to a pod
+  proxy          Run a proxy to the Kubernetes API server
+  cp             Copy files and directories to and from containers.
+  auth           Inspect authorization
+
+Advanced Commands:
+  diff           Diff live version against would-be applied version
+  apply          Apply a configuration to a resource by filename or stdin
+  patch          Update field(s) of a resource using strategic merge patch
+  replace        Replace a resource by filename or stdin
+  wait           Experimental: Wait for a specific condition on one or many
+resources.
+  convert        Convert config files between different API versions
+  kustomize      Build a kustomization target from a directory or a remote url.
+
+Settings Commands:
+  label          Update the labels on a resource
+  annotate       Update the annotations on a resource
+  completion     Output shell completion code for the specified shell (bash or
+zsh)
+
+Other Commands:
+  api-resources  Print the supported API resources on the server
+  api-versions   Print the supported API versions on the server, in the form of
+"group/version"
+  config         Modify kubeconfig files
+  plugin         Provides utilities for interacting with plugins.
+  version        Print the client and server version information
+
+Usage:
+  kubectl [flags] [options]
+
+Use "kubectl <command> --help" for more information about a given command.
+Use "kubectl options" for a list of global command-line options (applies to all
+commands).
+---------------------------------------------------------------------------------
+kubectl get nodes
+
+
+/home/techmuser/TestConfig.user
+---------------Change Permissions----------------------------------------------
+[root@dockervm techmuser]# chown -R techmuser:techmuser TestConfig.user
+[root@dockervm techmuser]# exit
+exit
+[techmuser@dockervm ~]$ ls -al
+total 3628
+drwx------. 8 techmuser techmuser    4096 Sep  2 11:57 .
+drwxr-xr-x. 3 root      root           23 Jul 19 09:57 ..
+-rw-rw-r--. 1 techmuser techmuser     270 Aug 24 08:43 1
+-rw-------. 1 techmuser techmuser   17874 Sep  2 04:02 .bash_history
+-rw-r--r--. 1 techmuser techmuser      18 Apr 11  2018 .bash_logout
+-rw-r--r--. 1 techmuser techmuser     193 Apr 11  2018 .bash_profile
+-rw-r--r--. 1 techmuser techmuser     231 Apr 11  2018 .bashrc
+drwxrwxr-x. 3 techmuser techmuser      18 Jul 19 10:03 .cache
+drwxrwxr-x. 3 techmuser techmuser      18 Jul 19 10:03 .config
+drwxrwxr-x. 4 techmuser techmuser      53 Sep  1 14:55 dockercompose
+drwxr-xr-x. 2 root      root          190 Jul 19 10:38 dockertest
+-rw-rw-r--. 1 techmuser techmuser       0 Aug 23 03:40 javax.servlet.ServletException:
+-rw-r--r--. 1 root      root         1279 Aug 25 13:58 jenkinsauto1.groovy
+-rwxrwxrwx. 1 techmuser techmuser     816 Aug 24 11:10 jenkinsauto1.sh
+-rwxrwxrwx. 1 techmuser techmuser     505 Aug 23 03:39 JenkinsAutomation.sh
+-rw-rw-r--. 1 techmuser techmuser 3620574 Aug 16 11:56 jenkins-cli.jar
+-rw-r--r--. 1 root      root          405 Aug 16 13:22 KeyAuth
+drwxr-x---. 3 techmuser techmuser      24 Sep  2 11:37 .kube
+-rw-rw-r--. 1 techmuser techmuser   14724 Aug 25 14:00 output.log
+drwxrw----. 3 techmuser techmuser      19 Sep  1 13:46 .pki
+-rwxrwxrwx. 1 techmuser techmuser    9629 Sep  2 11:55 TestConfig.user
+-rw-------. 1 techmuser techmuser    4173 Aug 24 11:10 .viminfo
+[techmuser@dockervm ~]$ kubectl get pods --kubeconfig=TestConfig.user
+No resources found.
+-------------------------------------------------------------------------------------
+[techmuser@dockervm ~]$ kubectl get namespaces --kubeconfig=TestConfig.user
+NAME          STATUS   AGE
+default       Active   56m
+kube-public   Active   56m
+kube-system   Active   56m
+
+------------------------------------------------------------------------------
+[techmuser@dockervm ~]$ az aks get-credentials --resource-group KubeResGroup --name KubeTestCluster
+Please run 'az login' to setup account.
+[techmuser@dockervm ~]$ az login
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code EKYFULT8U to authenticate.
+[
+  {
+    "cloudName": "AzureCloud",
+    "id": "d90e4cac-472f-4d07-8c97-ab745e0cde48",
+    "isDefault": true,
+    "name": "Visual Studio Enterprise ? MPN",
+    "state": "Enabled",
+    "tenantId": "7282dbaf-e86c-4be9-8b43-fbe21adcee57",
+    "user": {
+      "name": "MV00503834@mpntechm.onmicrosoft.com",
+      "type": "user"
+    }
+  }
+]
+[techmuser@dockervm ~]$ az aks get-credentials --resource-group KubeResGroup --name KubeTestCluster
+Merged "KubeTestCluster" as current context in /home/techmuser/.kube/config
+[techmuser@dockervm ~]$ kubectl get nodes
+NAME                       STATUS   ROLES   AGE    VERSION
+aks-nodepool1-15925251-0   Ready    agent   80m    v1.13.10
+aks-nodepool1-15925251-1   Ready    agent   6m4s   v1.13.10
+--------------------------------------------------------------------------------------------------------------------
+[techmuser@dockervm Dockerapp]$ kubectl apply -f azure-vote-all-in-one-redis.yaml
+deployment.apps/azure-vote-back created
+service/azure-vote-back created
+deployment.apps/azure-vote-front created
+service/azure-vote-front created
+--------------------------------------------------------------------------------------------------------------------
+techmuser@dockervm Dockerapp]$ kubectl get service azure-vote-front --watch
+NAME               TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+azure-vote-front   LoadBalancer   10.0.138.155   <pending>     80:32737/TCP   37s
+NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)        AGE
+azure-vote-front   LoadBalancer   10.0.138.155   13.68.139.65   80:32737/TCP   64s
+
