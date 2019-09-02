@@ -48,7 +48,7 @@ spec:
         "beta.kubernetes.io/os": linux
       containers:
       - name: azure-vote-front
-        image: index.docker.io/mohanraj123/mohanvoteapp123:1.01
+        image: mohanraj123/mohanvoteapp123:1.01
         imagePullPolicy: Always
         imagePullSecrets:
         - name: myregistrykey
