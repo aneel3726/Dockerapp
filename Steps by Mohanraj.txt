@@ -660,3 +660,24 @@ azure-vote-front   LoadBalancer   10.0.138.155   <pending>     80:32737/TCP   37
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.138.155   13.68.139.65   80:32737/TCP   64s
 
+
+------------------------------------------------------------------------------------------------------------
+export DOCKER_REGISTRY_SERVER=https://index.docker.io/v1/
+export DOCKER_USER=mohanraj123
+export DOCKER_EMAIL=mohanraj123@gmail.com
+export DOCKER_PASSWORD=sulur!123
+
+kubectl create secret docker-registry myregistrykey \
+  --docker-server=$DOCKER_REGISTRY_SERVER \
+  --docker-username=$DOCKER_USER \
+  --docker-password=$DOCKER_PASSWORD \
+  --docker-email=$DOCKER_EMAIL
+  
+  
+  [techmuser@dockervm Dockerapp]$ kubectl create secret docker-registry myregistrykey \
+>   --docker-server=$DOCKER_REGISTRY_SERVER \
+>   --docker-username=$DOCKER_USER \
+>   --docker-password=$DOCKER_PASSWORD \
+>   --docker-email=$DOCKER_EMAIL
+secret/myregistrykey created
+
